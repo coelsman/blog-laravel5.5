@@ -1,0 +1,26 @@
+#post-wrapper {
+	display: flex;
+}
+#post-wrapper .post {
+	padding-bottom: 20px;
+	position: relative;
+}
+#post-wrapper .post h3 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#post-wrapper .post img {
+	max-width: 100%;
+    margin-bottom: 10px;
+}
+#post-wrapper .post .summary {}
+#post-wrapper .post .viewmore {
+	position: absolute;
+	bottom: 5px;
+	right: 3px;
+}
+#post-wrapper .post .comments {
+	font-size: 11px;
+	color: #2d3282;
+}
