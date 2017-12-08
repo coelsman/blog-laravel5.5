@@ -13,11 +13,15 @@
 						</span>
 					</div>
 					<div class="line-row">
-						<h3>23 SEP</h3>
-						<h4>12:00am - 7:00am</h4>
+						{{#if time_range}}
+							<h3>{{date_range}}</h3>
+							<h4>{{time_range}}</h4>
+						{{else}}
+							<h3 class="date">{{date_range}}</h3>
+						{{/if}}
 					</div>
 					<div class="line-row">
-						<h2>£{{float_format ticket_prize 0}} <span>7hrs @£{{float_format sale_ticket_prize 2}}</span></h2>
+						<h2>£{{float_format ticket_prize 0}} <span>{{hours_sale}}hrs @£{{float_format sale_ticket_prize 2}}</span></h2>
 						<span class="icon icon-3">
 							{{#int_larger attends 0}}
 								<span class="badge">{{attends}}</span>

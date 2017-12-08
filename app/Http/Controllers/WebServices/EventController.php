@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\WebServices;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

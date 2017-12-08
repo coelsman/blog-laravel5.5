@@ -24,7 +24,7 @@
 * String Helpers
 */
 	Handlebars.registerHelper('str_uppercase', function (str, opts) {
-		return str.toUpperCase();
+		return String(str).toUpperCase();
 	});
 /* End String Helpers */
 

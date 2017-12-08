@@ -1,13 +1,3 @@
-var Handlebars = require('handlebars');
-var hbs = require('hbs');
-var fs = require('browserify-fs');
-
-Handlebars.registerHelper('int_equal', function (a, b, opts) {
-	return parseInt(a) === parseInt(b)
-		? opts.fn(this)
-		: opts.inverse(this);
-});
-
 var Paginator = function () {
 
 };
@@ -77,6 +67,7 @@ var getNewsPagination = function (page) {
 	AsyncLoader(
 		getHotNews(page)
 	).then(function (postData, templateSource) {
+		console.log(postData);
 		buildPostsTemplate(postData, ['post-compiler', 'post-wrapper'], ['paginator-compiler', 'paginator-wrapper']);
 	});
 };

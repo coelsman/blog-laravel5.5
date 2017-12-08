@@ -208,6 +208,7 @@
       "resolved": "https://registry.npmjs.org/exit/-/exit-0.1.2.tgz",
       "version": "0.1.2"
     },
+    "express": "^4.16.2",
     "figures": {
       "integrity": "sha1-y+Hjr/zxzUS4DK3+0o3Hk6lwHS4=",
       "requires": {
@@ -676,6 +677,7 @@
       "resolved": "https://registry.npmjs.org/redent/-/redent-1.0.0.tgz",
       "version": "1.0.0"
     },
+    "redis": "^2.8.0",
     "repeating": {
       "integrity": "sha1-UhTFOpJtNVJwdSf7q0FdvAjQbdo=",
       "requires": {
@@ -709,6 +711,7 @@
       "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz",
       "version": "3.0.2"
     },
+    "socket.io": "^2.0.4",
     "source-map": {
       "integrity": "sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=",
       "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz",

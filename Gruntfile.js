@@ -26,11 +26,14 @@ module.exports = function(grunt) {
 			my_target: {
 				files: {
 					'public/js/script.min.js': [
+						'public/libs/moment-with-locales.js',
 						'resources/src/js/configs/async.js',
 						'resources/src/js/app.js',
 						'resources/src/js/handlebars/helper.js',
+						'resources/src/js/socket.js',
 						'resources/src/js/search.js',
-						'resources/src/js/events.js'
+						'resources/src/js/events.js',
+						'resources/src/js/post.js'
 					],
 				},
 			},

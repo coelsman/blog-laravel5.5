@@ -39,4 +39,9 @@
 			@include('handlebars.all_events')
 		</div>
 	</section>
+
+	@section('scripts')
+		 <script src="http://localhost:8890/socket.io/socket.io.js"></script>
+		 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script> -->
+	@stop
 @stop

@@ -24,3 +24,6 @@ Route::get('/hot-news', function () {
 Route::get('/all-events', function () {
 	return View::make('event.index');
 });
+
+Route::get('/cms/event/create', 'CMS\EventController@create');
+Route::post('/cms/event/create', 'CMS\EventController@create');
