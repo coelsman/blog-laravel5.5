@@ -1,0 +1,13 @@
+@mixin column ($num) {
+	width: (100% / 12 * $num);
+}
+@mixin block_center () {
+	margin: 0px auto;
+}
+@mixin get_column ($scrSize) {
+	@for $i from 1 through 12 {
+		.col-#{$scrSize}-#{$i} {
+			@include column($i);
+		}
+	}
+}

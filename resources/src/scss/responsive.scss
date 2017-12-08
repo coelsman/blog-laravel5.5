@@ -1,0 +1,78 @@
+@media (min-width: 240px) {
+	@include get_column('xxs');
+}
+
+@media (min-width: 480px) {
+	@include get_column('xs');
+}
+
+@media (min-width: 768px) {
+	@include get_column('sm');
+}
+
+@media (min-width: 1024px) {
+	@include get_column('md');
+}
+
+
+@media (max-width: 1199px) {
+	body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	.container-fluid {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	header {
+		ul {
+			li {
+				&:first-child {
+					width: 100%;
+					text-align: center;
+				}
+				&.child-vertical {
+					width: (100% / 6);
+					height: 80px;
+					label {
+						display: none;
+					}
+				}
+			}
+		}
+		.menu-dropdown {
+			right: 20px;
+			top: 30px;
+			margin-top: 0px;
+		}
+	}
+	section#menu {
+		.search {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	header {
+		ul {
+			height: 60px;
+			li {
+				&:not(:first-child) {
+					display: none;
+				}
+				&:first-child {
+					width: 70px;
+				}
+			}
+		}
+		.menu-dropdown {
+			right: 10px;
+			height: 80px;
+			width: 80px;
+			top: 0px;
+		}
+	}
+}

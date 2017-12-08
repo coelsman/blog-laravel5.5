@@ -12,10 +12,15 @@
 */
 
 Route::get('/posts', 'WebServices\PostController@index');
-Route::get('/posts/page/{page}', array('uses' => 'WebServices\PostController@index'));
+Route::get('/events', 'WebServices\EventController@index');
 
 Route::get('/', function () {
 	echo '22';
 });
 
-Route::get('/hot-news', 'PostController@index');
+Route::get('/hot-news', function () {
+	return View::make('post.index');
+});
+Route::get('/all-events', function () {
+	return View::make('event.index');
+});
