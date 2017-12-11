@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 					'public/js/script.min.js': [
 						'public/libs/moment-with-locales.js',
 						'resources/src/js/configs/async.js',
+						'resources/src/js/configs/paginator.js',
 						'resources/src/js/app.js',
 						'resources/src/js/handlebars/helper.js',
 						'resources/src/js/socket.js',

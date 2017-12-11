@@ -19,7 +19,7 @@
 	<nav aria-label="Page navigation">
 		<ul class="pagination">
 			<li>
-				<a href="js:return;" onclick="paginator.jumpToPage({{prev}});">
+				<a href="js:return;" data-page="{{prev}}">
 					<span aria-hidden="true">Prev</span>
 				</a>
 			</li>
@@ -27,11 +27,11 @@
 				{{#int_equal page @root.current}}
 					<li class="active"><a href="js:return;">{{page}}</a></li>
 				{{else}}
-					<li><a href="js:return;" onclick="paginator.jumpToPage({{page}});">{{page}}</a></li>
+					<li><a href="js:return;" data-page="{{page}}">{{page}}</a></li>
 				{{/int_equal}}
 			{{/each}}
 			<li>
-				<a href="js:return;" onclick="paginator.jumpToPage({{next}});">
+				<a href="js:return;" data-page="{{next}}">
 					<span aria-hidden="true">Next</span>
 				</a>
 			</li>
