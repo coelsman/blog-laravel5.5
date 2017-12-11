@@ -42,7 +42,7 @@ if (document.getElementById('event-compiler')) {
 
 	getEvents().then(function (json) {
 		$('#event-wrapper').html(eventTemplate({
-			events: mapperEvents(json)
+			events: mapperEvents(json.data)
 		}));
 	});
 

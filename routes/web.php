@@ -11,8 +11,13 @@
 |
 */
 
+use App\Models\Events as EventModel;
+use App\Http\Resources\Event as EventResource;
+
 Route::get('/posts', 'WebServices\PostController@index');
-Route::get('/events', 'WebServices\EventController@index');
+Route::get('/events', function () {
+	return new EventResource(EventModel::all());
+});
 
 Route::get('/', function () {
 	echo '22';
