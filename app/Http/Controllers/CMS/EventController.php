@@ -19,11 +19,15 @@ class EventController extends BaseController
 
 	public function create (Request $request) {
 		if ($request->isMethod('post')) {
+			$data = $request->only($this->Events->getFillable());
+			$data = array_filter($data, 'strlen');
 
-			if ($this->Events->save($request->all())) {
+			if ($this->Events->fill($data)->save()) {
 				$redis = LRedis::connection();
 				$redis->publish('message', json_encode(array($request->all())));
 			}
+
+			return view('cms.event.create');
 		}
 
 		return view('cms.event.create');
