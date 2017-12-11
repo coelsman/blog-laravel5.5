@@ -25,12 +25,4 @@ class Events extends Model
 
 		$this->fillable = ['title', 'address', 'start_time', 'end_time', 'ticket_prize', 'sale_ticket_prize', 'hours_sale', 'attends', 'emails'];
 	}
-
-	public function setTitleAttribute ($title) {
-		$this->attributes['title'] = is_null($title) ? '' : $title;
-	}
-
-	public function setAddressAttribute ($address) {
-		$this->attributes['address'] = is_null($address) ? '' : $address;
-	}
 }
