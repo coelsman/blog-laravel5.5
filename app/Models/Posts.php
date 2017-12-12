@@ -20,6 +20,11 @@ class Posts extends Model
 		return $posts;
 	}
 
+	public function scopeWithImages()
+	{
+		return static::with('images')->get();
+	}
+
 	public function user()
 	{
 		return $this->belongsto('App\Models\Users', 'user_id');
@@ -28,6 +33,11 @@ class Posts extends Model
 	public function comment()
 	{
 		return $this->hasMany('App\Models\Comments', 'post_id');
+	}
+
+	public function images()
+	{
+		return $this->morphMany('App\Models\Images', 'image');
 	}
 
 	public static function getOffset ($page)

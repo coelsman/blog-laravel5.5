@@ -23,6 +23,18 @@ class Events extends Model
 			'emails'            => 0,
 		);
 
-		$this->fillable = ['title', 'address', 'start_time', 'end_time', 'ticket_prize', 'sale_ticket_prize', 'hours_sale', 'attends', 'emails'];
+		$this->fillable = array('title', 'address', 'start_time', 'end_time', 'ticket_prize', 'sale_ticket_prize', 'hours_sale', 'attends', 'emails');
+
+		$this->casts = array(
+			'title'             => 'string',
+			'address'           => 'string',
+			'start_time'        => 'datetime',
+			'end_time'          => 'datetime',
+			'ticket_prize'      => 'double',
+			'sale_ticket_prize' => 'double',
+			'hours_sale'        => 'integer',
+			'attends'           => 'integer',
+			'emails'            => 'integer',
+		);
 	}
 }
