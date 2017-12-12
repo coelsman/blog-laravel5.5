@@ -11,6 +11,7 @@
 	float: left;
 	padding-left: 15px;
 	padding-right: 15px;
+	min-height: 1px;
 	&.flex {
 		display: flex;
 	}
@@ -71,12 +72,19 @@
 .bg-black {
 	background-color: $bgBlack;
 }
+.form-group {
+	margin-bottom: 10px;
+}
+.error {
+	color: #f00;
+}
 ul {
 	li {
 		list-style-type: none;
 	}
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"], {
 	color: $bgOrange;
 	font-size: 14px;
 	padding: 8px;
@@ -87,6 +95,11 @@ input[type="text"] {
 	}
 	&.form-control {
 		width: 100%;
+		border: 1px solid #ccc;
+		color: $bgBlack;
+		&::placeholder {
+			color: $bgBlack;
+		}
 	}
 }
 

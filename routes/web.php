@@ -73,12 +73,26 @@ Route::get('/', function () {
 	echo '22';
 });
 
-Route::get('/hot-news', function () {
-	return View::make('post.index');
+/**
+* Group routers require login
+*/
+	Route::group(['middleware' => ['auth']], function () {
+		Route::get('/hot-news', function () {
+			return View::make('post.index');
+		});
+		Route::get('/all-events', function () {
+			return View::make('event.index');
+		});
+		Route::get('/logout', function () {
+			\Session::forget('user');
+			return redirect('login');
+		});
+	});
+
+Route::get('/login', function () {
+	return View::make('auth.login');
 });
-Route::get('/all-events', function () {
-	return View::make('event.index');
-});
+Route::post('/login', 'AuthController@login');
 
 Route::get('/cms/event/create', 'CMS\EventController@create');
 Route::post('/cms/event/create', 'CMS\EventController@create');
