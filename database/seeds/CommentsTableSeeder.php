@@ -11,6 +11,8 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('comments')->delete();
+
         DB::table('comments')->insert(array(
         	array('user_id' => 2, 'post_id' => 1, 'content' => 'AAA'),
         	array('user_id' => 1, 'post_id' => 2, 'content' => 'AAA'),

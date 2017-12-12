@@ -11,6 +11,8 @@ class EventsTableSeeder extends Seeder
      */
     public function run()
     {
+		DB::table('events')->delete();
+
         DB::table('events')->insert(array(
         	array(
 				'title' => 'Cleaner',

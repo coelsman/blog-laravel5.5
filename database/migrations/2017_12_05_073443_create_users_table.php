@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username', 32)->unique();
             $table->string('fullname', 64);
+            $table->integer('countries_id');
             $table->tinyInteger('role');
             $table->timestamps();
 

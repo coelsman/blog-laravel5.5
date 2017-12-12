@@ -15,24 +15,59 @@ use App\Models\Events as EventModel;
 use App\Models\Images as ImageModel;
 use App\Models\Users as UserModel;
 use App\Models\Posts as PostModel;
+use App\Models\Countries as CountryModel;
 use App\Http\Resources\Event as EventResource;
 use App\Http\Resources\Image as ImageResource;
 use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Post as PostResource;
+use App\Http\Resources\Country as CountryResource;
 
-Route::get('/posts', 'WebServices\PostController@index');
 Route::get('/events', function () {
 	return new EventResource(EventModel::all());
 });
-Route::get('/images/get', function () {
-	return new ImageResource(ImageModel::all());
-});
-Route::get('/users/images', function (UserModel $userModel) {
-	return new UserResource($userModel->withImages());
-});
-Route::get('/posts/images', function (PostModel $postModel) {
-	return new ImageResource($postModel->withImages());
-});
+
+/**
+* Define routers for Image resources
+*/
+	Route::get('/images/get', function () {
+		return new ImageResource(ImageModel::all());
+	});
+	Route::get('/images/users', function (ImageModel $imageModel) {
+		return new ImageResource($imageModel->withUsers()->get());
+	});
+
+/**
+* Define routers for Post resources
+*/
+	Route::get('/posts', function () {
+		return new PostResource(PostModel::allPosts());
+	});
+	Route::get('/posts/images', function (PostModel $postModel) {
+		return new PostResource($postModel->withImages()->get());
+	});
+
+/**
+* Define routers for User resources
+*/
+	Route::get('/users', function (UserModel $userModel) {
+		return new UserResource($userModel->fullData()->get());
+	});
+	Route::get('/users/images', function (UserModel $userModel) {
+		return new UserResource($userModel->withImages()->get());
+	});
+	Route::get('/users/country', function (UserModel $userModel) {
+		return new UserResource($userModel->withCountry()->get());
+	});
+	Route::get('/users/posts', function (UserModel $userModel) {
+		return new UserResource($userModel->withPost()->get());
+	});
+
+/**
+* Define routers for Country resources
+*/
+	Route::get('/countries/posts', function (CountryModel $countryModel) {
+		return new CountryResource($countryModel->withPost()->get());
+	});
 
 Route::get('/', function () {
 	echo '22';

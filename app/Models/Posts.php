@@ -20,22 +20,34 @@ class Posts extends Model
 		return $posts;
 	}
 
+	/**
+	* Retrieve data with Images Morph relation
+	*/
 	public function scopeWithImages()
 	{
-		return static::with('images')->get();
+		return static::with('image');
 	}
 
+	/**
+	* Inverse One-to-Many relation with Users
+	*/
 	public function user()
 	{
 		return $this->belongsto('App\Models\Users', 'user_id');
 	}
 
+	/**
+	* One-to-Many relation with Comments
+	*/
 	public function comment()
 	{
 		return $this->hasMany('App\Models\Comments', 'post_id');
 	}
 
-	public function images()
+	/**
+	* Morph relation with Images
+	*/
+	public function image()
 	{
 		return $this->morphMany('App\Models\Images', 'image');
 	}
