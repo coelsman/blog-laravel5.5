@@ -9,14 +9,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\Login as LoginRequest;
+use App\Models\Users;
 
 class AuthController extends BaseController
 {
     public function login (LoginRequest $request)
     {
-    	\Session::put('user', array(
-    		'username' => $request->input('username')
-    	));
+    	// \Session::put('user', array(
+    	// 	'username' => $request->input('username')
+    	// ));
     	return redirect('all-events');
     }
 }

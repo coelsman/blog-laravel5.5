@@ -22,51 +22,59 @@ use App\Http\Resources\User as UserResource;
 use App\Http\Resources\Post as PostResource;
 use App\Http\Resources\Country as CountryResource;
 
-Route::get('/events', function () {
-	return new EventResource(EventModel::all());
-});
-
 /**
-* Define routers for Image resources
+* Group API routers
 */
-	Route::get('/images/get', function () {
-		return new ImageResource(ImageModel::all());
-	});
-	Route::get('/images/users', function (ImageModel $imageModel) {
-		return new ImageResource($imageModel->withUsers()->get());
-	});
+	Route::prefix('api')->group(function () {
+		/**
+		* Define routers for Event resources
+		*/
+			Route::get('/events', function () {
+				return new EventResource(EventModel::all());
+			});
 
-/**
-* Define routers for Post resources
-*/
-	Route::get('/posts', function () {
-		return new PostResource(PostModel::allPosts());
-	});
-	Route::get('/posts/images', function (PostModel $postModel) {
-		return new PostResource($postModel->withImages()->get());
-	});
+		/**
+		* Define routers for Image resources
+		*/
+			Route::get('/images/get', function () {
+				return new ImageResource(ImageModel::all());
+			});
+			Route::get('/images/users', function (ImageModel $imageModel) {
+				return new ImageResource($imageModel->withUsers()->get());
+			});
 
-/**
-* Define routers for User resources
-*/
-	Route::get('/users', function (UserModel $userModel) {
-		return new UserResource($userModel->fullData()->get());
-	});
-	Route::get('/users/images', function (UserModel $userModel) {
-		return new UserResource($userModel->withImages()->get());
-	});
-	Route::get('/users/country', function (UserModel $userModel) {
-		return new UserResource($userModel->withCountry()->get());
-	});
-	Route::get('/users/posts', function (UserModel $userModel) {
-		return new UserResource($userModel->withPost()->get());
-	});
+		/**
+		* Define routers for Post resources
+		*/
+			Route::get('/posts', function () {
+				return new PostResource(PostModel::allPosts());
+			});
+			Route::get('/posts/images', function (PostModel $postModel) {
+				return new PostResource($postModel->withImages()->get());
+			});
 
-/**
-* Define routers for Country resources
-*/
-	Route::get('/countries/posts', function (CountryModel $countryModel) {
-		return new CountryResource($countryModel->withPost()->get());
+		/**
+		* Define routers for User resources
+		*/
+			Route::get('/users', function (UserModel $userModel) {
+				return new UserResource($userModel->fullData()->get());
+			});
+			Route::get('/users/images', function (UserModel $userModel) {
+				return new UserResource($userModel->withImages()->get());
+			});
+			Route::get('/users/country', function (UserModel $userModel) {
+				return new UserResource($userModel->withCountry()->get());
+			});
+			Route::get('/users/posts', function (UserModel $userModel) {
+				return new UserResource($userModel->withPost()->get());
+			});
+
+		/**
+		* Define routers for Country resources
+		*/
+			Route::get('/countries/posts', function (CountryModel $countryModel) {
+				return new CountryResource($countryModel->withPost()->get());
+			});
 	});
 
 Route::get('/', function () {
@@ -87,12 +95,32 @@ Route::get('/', function () {
 			\Session::forget('user');
 			return redirect('login');
 		});
+
+		Route::prefix('cms')->group(function () {
+			Route::get('event/create', 'CMS\EventController@create');
+			Route::post('event/create', 'CMS\EventController@create');
+
+			Route::get('post/create', function () {
+				return View::make('cms.post.create');
+			});
+			Route::post('post/create', 'CMS\PostController@create');
+
+			Route::get('post/update/{id}', function ($id) {
+				return View::make('cms.post.update', array(
+					'postObject' => PostModel::find($id)
+				));
+			});
+			Route::put('post/update/{id}', 'CMS\PostController@update');
+		});
 	});
 
-Route::get('/login', function () {
-	return View::make('auth.login');
-});
-Route::post('/login', 'AuthController@login');
-
-Route::get('/cms/event/create', 'CMS\EventController@create');
-Route::post('/cms/event/create', 'CMS\EventController@create');
+/**
+* Group routers for Guest
+*/
+	Route::group(['middleware' => ['guest']], function () {
+		Route::get('/login', function () {
+			return View::make('auth.login');
+		});
+		Route::post('/login', 'AuthController@login');
+	});
+	

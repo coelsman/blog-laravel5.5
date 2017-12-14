@@ -13,7 +13,6 @@ class EventController extends BaseController
 {
 	public function __construct()
 	{
-		$this->middleware('guest');
 		$this->Events = new Events;
 	}
 
